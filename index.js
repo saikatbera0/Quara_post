@@ -55,8 +55,13 @@ app.patch("/posts/:id", (req, res) => {
     console.log(id);
     let newContent  = req.body.content;
     let post = posts.find((p) => (id) === p.id);
-    post.content = newContent;
-    res.redirect("http://localhost:8080/posts/");
+    let { pass } = req.body;
+    if (post.password == pass) {
+        post.content = newContent;
+        res.redirect("http://localhost:8080/posts/");
+    } else {
+        res.render("passError.ejs",{post});
+    }
 });
 
 app.get("/posts/:id/edit", (req, res) => {

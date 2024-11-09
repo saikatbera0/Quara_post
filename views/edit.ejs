@@ -12,6 +12,7 @@
     <p>Username: @<%= post.username %></p>
     
     <form action="/posts/<%= post.id %>?_method=PATCH" method="post">
+        <input type="password" name="pass" placeholder="Enter password to Conferm edit" required>
         <textarea name="content" rows="10" cols="35" required><%= post.content %></textarea>
         <button>Submit</button>
         <a href="/posts">go back</a>
